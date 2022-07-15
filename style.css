@@ -1,3 +1,267 @@
+html {
+  font-size: 14px;
+}
+
+/* Custom properties */
+:root {
+  /* Design colors */
+  --darker-blue: #0C122C;
+  --light-blue: #1E2D69;
+  --white: #FFFFFF;
+  --gray: #DBD9FF;
+  --black: #000000;
+  --dark-blue: #151f4a;
+
+  /* Additional colors */
+  --button-background-color-hover: #131b44;
+}
+
 body {
-  background-color: #000000;
+  margin: 0;
+
+  color: var(--gray);
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Desktop layout */
+.grid_wrapper {
+  display: grid;
+  align-items: center;
+
+  height: 100vh;
+
+  background-color: var(--darker-blue);
+  background-image: url("images/bg-desktop.png");
+  background-position: bottom;
+  /* Made background slightly larger to mimic original design */
+  background-size: 110% calc(100vh - 50%);
+  background-repeat: no-repeat;
+}
+
+.grid_container {
+  display: grid;
+  grid-template: 50px 50px 50px 50px / 350px 540px;
+  column-gap: 2rem;
+
+  justify-content: center;
+}
+
+.left_card {
+  display: grid;
+  grid-template: 1fr 1fr;
+  grid-row: span 4;
+  gap: 2rem;
+
+  background-color: var(--light-blue);
+
+  border-radius: 1rem 5rem 1rem 1rem;
+  padding: 3rem;
+}
+
+.buttons_container {
+  display: grid;
+  grid-template: 48px / 48px 48px 48px;
+  gap: 1rem;
+}
+
+/* The transitions sometimes fire for seemingly no reason on page load, or when I tab back to the browser. Not sure why that is? */
+.button {
+  display: flex;
+  justify-content: center;
+
+  padding: 1rem;
+
+  background-color: var(--darker-blue);
+
+  border-radius: 1rem;
+
+  transition: ease-in-out 200ms;
+}
+
+.button:hover {
+  background-color: var(--button-background-color-hover);
+  
+  cursor: pointer;
+}
+
+.storage_bubble {
+  display: flex;
+  grid-area: -5 / 2 / span 2;
+  background-color: var(--white);
+  justify-self: end;
+  margin-right: 3rem;
+
+  z-index: 1;
+
+  border-radius: 1rem 1rem 0 1rem;
+
+  max-height: 50%;
+  max-width: fit-content;
+
+  padding: 1rem 0.55rem 1rem 2rem;
+}
+
+/* Bottom right triangle for the storage bubble */
+.storage_bubble::after {
+  content: "";
+
+  width: 0px;
+  height: 0px;
+
+  position: relative;
+
+  border-left: 0.78rem solid transparent;
+  border-right: 0.78rem solid #FFFFFF;
+  border-top: 0.78rem solid #FFFFFF;
+  border-bottom: 0.78rem solid transparent;
+
+  right: -8px;
+  top: 64px;
+}
+
+.storage_amount_left_numbers {
+  align-self: center;
+
+  font-size: 2.85rem;
+  font-weight: bold;
+  color: var(--black);
+
+  margin: 0;
+}
+
+.storage_amount_left_text {
+  align-self: center;
+
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #868996;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+
+  margin: 0 0 0 1rem;
+}
+
+.right_card {
+  grid-area: -4 / 2 / span 3;
+  background-color: var(--light-blue);
+  background-size: 80%;
+
+  border-radius: 1rem;
+
+  padding: 2rem 3rem;
+}
+
+.storage_text_used {
+  font-weight: bold;
+}
+
+.progress_bar_container {
+  display: flex;
+
+  padding: 0.05rem 0.3rem;
+
+  background-color: var(--dark-blue);
+  border-radius: 1rem;
+
+  height: 1.43rem;
+}
+
+.progress_bar_inner {
+  display: flex;
+
+  align-self: center;
+  justify-content: flex-end;
+
+  background-image: linear-gradient(to right, #FFA197, #FF4A95);
+
+  height: 1rem;
+  width: 81.5%;
+  
+  padding: 0.05rem 0.2rem;
+  border-radius: 1rem;
+}
+
+.progress_bar_circle {
+  align-self: center;
+
+  background-color: #FFFFFF;
+  border-radius: 100%;
+
+  height: 0.8rem;
+  width: 0.8rem;
+}
+
+.storage_limits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.minimum_storage {
+  justify-self: start;
+
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.maximum_storage {
+  justify-self: end;
+
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Mobile layout */
+@media screen and (max-width: 1000px){
+  .grid_wrapper {
+    background-color: var(--darker-blue);
+    background-image: url("images/bg-desktop.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    /* Not sure if there is a better way to handle this - The background doesn't cover the entirety of the height at all sizes without all three of these */
+    min-height: 100vh;
+    max-height: 100%;
+    height: 100%;
+  }
+
+  .grid_container {
+    display: grid;
+    /* Added an extra 1rem row since I can't put a gap between specific rows, and adding a margin makes the card that has it smaller */
+    grid-template: repeat(4, 50px) 1rem repeat(5, 50px) / minmax(auto, 350px);
+  }
+
+  .storage_bubble {
+    grid-area: -3 / 1 / span 2;
+
+    justify-self: center;
+    align-self: center;
+    margin-right: 0;
+
+    border-radius: 1rem;
+
+    padding: 1rem 2rem;
+  }
+
+  /* Hide the triangle that is under the bubble on desktop layout - Any better way to do this without having to put unset on everything? */
+  .storage_bubble::after {
+    content: unset;
+  
+    width: unset;
+    height: unset;
+  
+    position: unset;
+  
+    border-left: unset;
+    border-right: unset;
+    border-top: unset;
+    border-bottom: unset;
+  
+    right: unset;
+    top: unset;
+  }
+
+  .right_card {
+    grid-area: -6 / 1 / span 4;
+  }
 }

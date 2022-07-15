@@ -4,12 +4,58 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="images/favicon-32x32.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
     <title>Fylo Data Storage Component</title>
   </head>
   <body>
     <main>
+      <div class="grid_wrapper">
+        <div class="grid_container">
 
+          <div class="left_card">
+            <img src="images/logo.svg" alt="Fylo logo - three diagonal squares are stacked on top of one another." class="logo">
+
+            <div class="buttons_container">
+              <div class="button">
+                <img src="images/icon-document.svg" alt="A page with the top right edge folded over.">
+              </div>
+              <div class="button">
+                <img src="images/icon-folder.svg" alt="A paper folder.">
+              </div>
+              <div class="button">
+                <img src="images/icon-upload.svg" alt="A cloud with an arrow pointing up in the middle of it.">
+              </div>
+            </div>
+          </div>
+
+          <div class="storage_bubble">
+            <p class="storage_amount_left_numbers">185</p>
+            <p class="storage_amount_left_text">GB Left</p>
+          </div>
+
+          <div class="right_card">
+            <div class="storage_info">
+              <p class="storage_text">You've used <span class="storage_text_used">815 GB</span> of your storage</p>
+
+              <div class="progress_bar_container">
+                <div class="progress_bar_inner">
+                  <div class="progress_bar_circle">
+                  </div>
+                </div>
+              </div>
+
+              <div class="storage_limits">
+                <p class="minimum_storage">0 GB</p>
+                <p class="maximum_storage">1000 GB</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </main>
   </body>
 </html>
