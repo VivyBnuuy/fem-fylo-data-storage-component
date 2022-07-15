@@ -214,7 +214,7 @@ body {
 @media screen and (max-width: 1000px){
   .grid_wrapper {
     background-color: var(--darker-blue);
-    background-image: url("images/bg-desktop.png");
+    background-image: url("images/bg-mobile.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
