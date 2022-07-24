@@ -1,4 +1,4 @@
-# Social Proof Section
+# Fylo Data Storage Component
 ![image](https://user-images.githubusercontent.com/47509295/179325895-55bd039e-f400-423c-b9ca-0609106b8230.png)
 
 Hi! Welcome to the repository for my solution to this <a href="https://www.frontendmentor.io/challenges/fylo-data-storage-component-1dZPRbV5n" target="_blank">Frontend Mentor challenge</a>!
